@@ -192,6 +192,10 @@ stop-all *extra_args: (run-tags "stop-all" extra_args)
 stop-group group *extra_args:
     @{{ just_executable() }} --justfile {{ justfile() }} run-tags stop-group --extra-vars="group={{ group }}" {{ extra_args }}
 
+# Fixes Paperless directory permissions (workaround for MASH not setting UID/GID correctly)
+fix-paperless *extra_args:
+    ansible-playbook -i inventory/hosts {{ justfile_directory() }}/fix-paperless-permissions.yml {{ extra_args }}
+
 # Prepares the requirements.yml file
 _requirements-yml:
     @{{ just_executable() }} --justfile {{ justfile() }} _ensure_file_prepared {{ templates_directory_path }}/requirements.yml {{ justfile_directory() }}/requirements.yml

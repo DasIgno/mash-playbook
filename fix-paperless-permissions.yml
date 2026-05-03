@@ -1,0 +1,24 @@
+---
+- name: Fix Paperless permissions and restart
+  hosts: mash_servers
+  become: yes
+  tasks:
+    - name: Ensure Paperless directories are owned by mash
+      ansible.builtin.file:
+        path: "{{ item }}"
+        owner: "994"
+        group: "984"
+        recurse: yes
+        state: directory
+      loop:
+        - /mash/paperless/media
+        - /mash/paperless/data
+        - /mash/paperless/consume
+        - /mash/paperless/export
+      when: paperless_enabled | default(false)
+
+    - name: Restart Paperless service
+      ansible.builtin.systemd:
+        name: mash-paperless
+        state: restarted
+      when: paperless_enabled | default(false)
