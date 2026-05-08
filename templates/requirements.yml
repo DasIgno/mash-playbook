@@ -88,6 +88,10 @@
   version: v0.10.0-5
   name: bitmagnet
   activation_prefix: bitmagnet_
+- src: git+https://seed.radicle.garden/zQdRwQ2s3FG5BZUjvSn1GYXbzVmw.git
+  version: v26.3.4-0
+  name: bookstack
+  activation_prefix: bookstack_
 - src: git+https://seed.radicle.garden/zxNS7XeayGimb4WFfvqmasiZZC3v.git
   version: v2.0.9-0
   name: borg_ui
@@ -125,7 +129,7 @@
   name: cleanup
   activation_prefix: system_cleanup_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-clickhouse.git
-  version: v26.4.1.1141-0
+  version: v26.4.2.10-0
   name: clickhouse
   activation_prefix: clickhouse_
 - src: git+https://iris.radicle.network/zp12kTQqmgqnFpUU6gPyVq19HNMD.git
@@ -557,7 +561,7 @@
   name: mumble
   activation_prefix: mumble_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-n8n.git
-  version: v2.20.0-0
+  version: v2.20.4-0
   name: n8n
   activation_prefix: n8n_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-navidrome.git
@@ -789,7 +793,7 @@
   name: readeck
   activation_prefix: readeck_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-redis.git
-  version: v8.6.2-0
+  version: v8.6.3-0
   name: redis
   activation_prefix: redis_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-redlib.git
@@ -825,7 +829,7 @@
   name: searxng
   activation_prefix: searxng_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-semaphore.git
-  version: v2.17.39-0
+  version: v2.18.2-0
   name: semaphore
   activation_prefix: semaphore_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-send.git
@@ -941,7 +945,7 @@
   name: transfersh
   activation_prefix: transfersh_
 - src: git+https://github.com/Bergruebe/ansible-role-tsdproxy.git
-  version: v1.4.7-0
+  version: v1.4.7-2
   name: tsdproxy
   activation_prefix: tsdproxy_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-typesense.git
@@ -953,7 +957,7 @@
   name: uptime_kuma
   activation_prefix: uptime_kuma_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-valkey.git
-  version: v9.0.3-4
+  version: v9.0.4-0
   name: valkey
   activation_prefix: valkey_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-vaultwarden.git
