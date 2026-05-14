@@ -731,6 +731,11 @@ mash_playbook_devture_systemd_service_manager_services_list_auto_itemized:
     {{ ({'name': (matterbridge_identifier + '.service'), 'priority': 2000, 'restart_necessary': (matterbridge_restart_necessary | bool), 'groups': ['mash', 'matterbridge']} if matterbridge_enabled else omit) }}
   # /role-specific:matterbridge
 
+  # role-specific:mazanoke
+  - |-
+    {{ ({'name': (mazanoke_identifier + '.service'), 'priority': 2000, 'restart_necessary': (mazanoke_restart_necessary | bool), 'groups': ['mash', 'mazanoke']} if mazanoke_enabled else omit) }}
+  # /role-specific:mazanoke
+
   # role-specific:mediawiki
   - |-
     {{ ({'name': (mediawiki_identifier + '.service'), 'priority': 2000, 'restart_necessary': (mediawiki_restart_necessary | bool), 'groups': ['mash', 'mediawiki']} if mediawiki_enabled else omit) }}
@@ -875,6 +880,11 @@ mash_playbook_devture_systemd_service_manager_services_list_auto_itemized:
     {{ ({'name': (oauth2_proxy_identifier + '.service'), 'priority': 1900, 'restart_necessary': (oauth2_proxy_restart_necessary | bool), 'groups': ['mash', 'oauth2-proxy']} if oauth2_proxy_enabled else omit) }}
   # /role-specific:oauth2_proxy
 
+  # role-specific:omnitools
+  - |-
+    {{ ({'name': (omnitools_identifier + '.service'), 'priority': 2000, 'restart_necessary': (omnitools_restart_necessary | bool), 'groups': ['mash', 'omnitools']} if omnitools_enabled else omit) }}
+  # /role-specific:omnitools
+
   # role-specific:onion_service_tor
   - |-
     {{ ({'name': (onion_service_tor_identifier + '.service'), 'priority': 2000, 'restart_necessary': (onion_service_tor_restart_necessary | bool), 'groups': ['mash', 'onion-service-tor']} if onion_service_tor_enabled else omit) }}
@@ -972,7 +982,7 @@ mash_playbook_devture_systemd_service_manager_services_list_auto_itemized:
 
   # role-specific:plex
   - |-
-    {{ ({'name': (plex_identifier + '.service'), 'priority': 2000, 'restart_necessary': true, 'groups': ['mash', 'plex']} if plex_enabled else omit) }}
+    {{ ({'name': (plex_identifier + '.service'), 'priority': 2000, 'restart_necessary': (plex_restart_necessary | bool), 'groups': ['mash', 'plex']} if plex_enabled else omit) }}
   # /role-specific:plex
 
   # role-specific:pocket_id
@@ -10401,6 +10411,44 @@ matterbridge_gid: "{{ mash_playbook_gid }}"
 
 
 
+# role-specific:mazanoke
+########################################################################
+#                                                                      #
+# mazanoke                                                             #
+#                                                                      #
+########################################################################
+
+mazanoke_enabled: false
+
+mazanoke_identifier: "{{ mash_playbook_service_identifier_prefix }}mazanoke"
+
+mazanoke_base_path: "{{ mash_playbook_base_path }}/{{ mash_playbook_service_base_directory_name_prefix }}mazanoke"
+
+mazanoke_uid: "{{ mash_playbook_uid }}"
+mazanoke_gid: "{{ mash_playbook_gid }}"
+
+mazanoke_container_additional_networks_auto: |
+  {{
+    ([mash_playbook_reverse_proxyable_services_additional_network] if mash_playbook_reverse_proxyable_services_additional_network else [])
+  }}
+
+mazanoke_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
+mazanoke_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
+
+# role-specific:traefik
+mazanoke_container_labels_traefik_entrypoints: "{{ traefik_entrypoint_primary }}"
+mazanoke_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_primary }}"
+# /role-specific:traefik
+
+########################################################################
+#                                                                      #
+# /mazanoke                                                            #
+#                                                                      #
+########################################################################
+# /role-specific:mazanoke
+
+
+
 # role-specific:mediawiki
 ########################################################################
 #                                                                      #
@@ -11781,6 +11829,44 @@ oauth2_proxy_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver
 #                                                                      #
 ########################################################################
 # /role-specific:oauth2_proxy
+
+
+
+# role-specific:omnitools
+########################################################################
+#                                                                      #
+# omnitools                                                            #
+#                                                                      #
+########################################################################
+
+omnitools_enabled: false
+
+omnitools_identifier: "{{ mash_playbook_service_identifier_prefix }}omnitools"
+
+omnitools_base_path: "{{ mash_playbook_base_path }}/{{ mash_playbook_service_base_directory_name_prefix }}omnitools"
+
+omnitools_uid: "{{ mash_playbook_uid }}"
+omnitools_gid: "{{ mash_playbook_gid }}"
+
+omnitools_container_additional_networks_auto: |
+  {{
+    ([mash_playbook_reverse_proxyable_services_additional_network] if mash_playbook_reverse_proxyable_services_additional_network else [])
+  }}
+
+omnitools_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
+omnitools_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
+
+# role-specific:traefik
+omnitools_container_labels_traefik_entrypoints: "{{ traefik_entrypoint_primary }}"
+omnitools_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_primary }}"
+# /role-specific:traefik
+
+########################################################################
+#                                                                      #
+# /omnitools                                                           #
+#                                                                      #
+########################################################################
+# /role-specific:omnitools
 
 
 
