@@ -130,7 +130,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Keycloak](https://www.keycloak.org/) | An identity and access management solution | [Link](services/keycloak.md) |
 | [KeyDB](https://docs.keydb.dev/) | An in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker | [Link](services/keydb.md) |
 | [keyoxide-web](https://codeberg.org/keyoxide/keyoxide-web) | Web client for [Keyoxide](https://keyoxide.org/), a decentralized tool to create and verify decentralized online identities | [Link](services/keyoxide.md) |
-| [Kutt](https://kutt.it/) | Modern URL shortener with support for custom domains | [Link](services/kutt.md) |
+| [Kutt](https://kutt.to/) | Modern URL shortener with support for custom domains | [Link](services/kutt.md) |
 | [LabelStudio](https://labelstud.io/) | Data labeling tool that supports multiple projects, users, and data types in one platform | [Link](services/labelstudio.md) |
 | [Lago](https://www.getlago.com/) | Metering and usage-based billing | [Link](services/lago.md) |
 | [LanguageTool](https://languagetool.org/) | An online grammar, style and spell checker | [Link](services/languagetool.md) |
@@ -234,7 +234,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [soundcloak](https://git.maid.zone/stuff/soundcloak) | Browse SoundCloud without exposing your IP address, browsing habits, and other browser fingerprinting data to the website | [Link](services/soundcloak.md) |
 | [Standalone Snowflake proxy](https://community.torproject.org/relay/setup/snowflake/standalone/) | Help users connect to the [Tor](https://torproject.org/) network in places where Tor is blocked | [Link](services/snowflake.md) |
 | [Statusnook](https://statusnook.com/) | Status page deployment service | [Link](services/statusnook.md) |
-| [Stirling PDF](https://github.com/Stirling-Tools/Stirling-PDF) | A PDF converter | [Link](services/stirling-pdf.md) |
+| [Stirling PDF v1](https://github.com/Stirling-Tools/Stirling-PDF) | A PDF converter | [Link](services/stirling-pdf.md) |
 | [syncstorage-rs](https://github.com/mozilla-services/syncstorage-rs) | Mozilla Sync Storage server in Rust, used to power Firefox Sync | [Link](services/syncstorage-rs.md) |
 | [Syncthing](https://syncthing.net/) | A continuous file synchronization program which synchronizes files between two or more computers in real time | [Link](services/syncthing.md) |
 | [Tandoor](https://docs.tandoor.dev/) | The recipe manager that allows you to manage your ever growing collection of digital recipes | [Link](services/tandoor.md) |
@@ -279,3 +279,5 @@ Below is a list of non-free (i.e. licensed under a non-free license) software wh
 - [matrix-docker-ansible-deploy (MDAD)](https://github.com/spantaleev/matrix-docker-ansible-deploy) — for deploying a fully-featured [Matrix](https://matrix.org) homeserver. This playbook will remain independent, because the Matrix ecosystem is incredibly large — lots of bots, bridges and other pieces of software. It deserves its own dedicated playbook.
 
   The basic steps to configure the MDAD playbook and use it to install services are pretty same as doing so with the MASH playbook: **setting up prerequisites (if running this playbook on a different computer), retrieving the MDAD playbook, configuring it as well as the DNS records, and installing the services on the server**. If you have been accustomed to use the MASH playbook, it should not be difficult to set up and use this playbook too.
+
+  Please refer to [this page](setting-up-services-on-mdad-server.md) for details about how to set up the MASH playbook to install services on your Matrix server.
