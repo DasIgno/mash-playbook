@@ -76,6 +76,10 @@
   version: v5.15.0-1
   name: barassistant
   activation_prefix: barassistant_
+- src: git+https://github.com/mother-of-all-self-hosting/ansible-role-bazarr.git
+  version: v1.5.6-ls342-3
+  name: bazarr
+  activation_prefix: bazarr_
 - src: git+https://seed.radicle.garden/z2bgVhWju6shYSwtdKb7v3eoSL1Pt.git
   version: v2.8.5-0
   name: bentopdf
@@ -101,7 +105,7 @@
   name: borg_ui
   activation_prefix: borg_ui_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-browserless.git
-  version: v2.50.1-0
+  version: v2.51.0-0
   name: browserless
   activation_prefix: browserless_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-calibre-web.git
@@ -369,7 +373,7 @@
   name: heyform
   activation_prefix: heyform_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-homarr.git
-  version: v1.63.0-0
+  version: v1.64.0-0
   name: homarr
   activation_prefix: homarr_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-hubsite.git
@@ -389,7 +393,7 @@
   name: immich
   activation_prefix: immich_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-immich-kiosk.git
-  version: v0.38.1-0
+  version: v0.39.3-0
   name: immich_kiosk
   activation_prefix: immich_kiosk_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-infisical.git
@@ -405,11 +409,11 @@
   name: inspircd
   activation_prefix: inspircd_
 - src: git+https://github.com/spatterIight/ansible-role-jackett.git
-  version: v0.24.1870-2
+  version: v0.24.1870-3
   name: jackett
   activation_prefix: jackett_
 - src: git+https://github.com/spatterIight/ansible-role-jellyfin.git
-  version: v10.11.10-0
+  version: v10.11.11-0
   name: jellyfin
   activation_prefix: jellyfin_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-jitsi.git
@@ -429,7 +433,7 @@
   name: karakeep
   activation_prefix: karakeep_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-keycloak.git
-  version: v26.6.2-0
+  version: v26.6.3-0
   name: keycloak
   activation_prefix: keycloak_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-keydb.git
@@ -528,6 +532,10 @@
   version: v0.28.0-1
   name: memos
   activation_prefix: memos_
+- src: git+https://iris.radicle.network/z2RAnfyxCYZSoUiDufyzTM7P3RvEd.git
+  version: v0.0.0-0
+  name: mermaid
+  activation_prefix: mermaid_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-minecraft.git
   version: v2025.4.2-2
   name: minecraft
@@ -573,7 +581,7 @@
   name: mumble
   activation_prefix: mumble_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-n8n.git
-  version: v2.25.3-0
+  version: v2.25.5-0
   name: n8n
   activation_prefix: n8n_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-navidrome.git
@@ -609,7 +617,7 @@
   name: notfellchen
   activation_prefix: notfellchen_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-ntfy.git
-  version: v2.22.0-1
+  version: v2.24.0-0
   name: ntfy
   activation_prefix: ntfy_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-oauth2-proxy.git
@@ -653,7 +661,7 @@
   name: otterwiki
   activation_prefix: otterwiki_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-outline.git
-  version: v1.7.1-1
+  version: v1.8.1-0
   name: outline
   activation_prefix: outline_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-owncast.git
@@ -745,7 +753,7 @@
   name: prometheus
   activation_prefix: prometheus_enabled
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-prometheus-alertmanager.git
-  version: v0.32.1-1
+  version: v0.32.2-0
   name: prometheus_alertmanager
   activation_prefix: prometheus_alertmanager_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-prometheus-blackbox-exporter.git
@@ -773,7 +781,7 @@
   name: prunemate
   activation_prefix: prunemate_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-qbittorrent.git
-  version: v5.2.1-0
+  version: v5.2.1-1
   name: qbittorrent
   activation_prefix: qbittorrent_
 - src: git+https://seed.radicle.garden/z3PCtuwyz2HdHeKnHCefR253rpYwp.git
@@ -957,7 +965,7 @@
   name: tinyauth
   activation_prefix: tinyauth_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-traefik.git
-  version: v3.7.3-0
+  version: v3.7.4-0
   name: traefik
   activation_prefix: mash_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-traefik-certs-dumper.git

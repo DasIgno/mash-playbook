@@ -21,7 +21,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 The playbook can install and configure the [Excalidraw](https://excalidraw.com/) client for you.
 
-Excalidraw is a free and open source virtual whiteboard for sketching hand-drawn like diagrams. It saves data locally on the browser, and the data is end-to-end encrypted.
+Excalidraw is a free and open-source virtual whiteboard for sketching hand-drawn like diagrams. It saves data locally on the browser, and the data is end-to-end encrypted.
 
 See the project's [documentation](https://docs.excalidraw.com/) to learn what it does and why it might be useful to you.
 
@@ -93,3 +93,4 @@ See [this section](https://github.com/mother-of-all-self-hosting/ansible-role-ex
 
 - [Docmost](docmost.md) — Collaborative wiki and documentation software
 - [Excalidraw collaboration server](excalidraw-room.md) — Collaboration server for Excalidraw instance
+- [Mermaid Live Editor](mermaid.md) — Flow chart and diagrams editor
