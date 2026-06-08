@@ -85,7 +85,7 @@
   name: bentopdf
   activation_prefix: bentopdf_
 - src: git+https://seed.radicle.garden/z2nQcYvPh51zfvVu8hkftDYPmELYP.git
-  version: v1.4.3-0
+  version: v1.5.1-0
   name: bichon
   activation_prefix: bichon_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-bind.git
@@ -101,7 +101,7 @@
   name: bookstack
   activation_prefix: bookstack_
 - src: git+https://seed.radicle.garden/zxNS7XeayGimb4WFfvqmasiZZC3v.git
-  version: v2.1.0-0
+  version: v2.2.3-0
   name: borg_ui
   activation_prefix: borg_ui_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-browserless.git
@@ -177,7 +177,7 @@
   name: cyberchef
   activation_prefix: cyberchef_
 - src: git+https://seed.radicle.garden/zeQ4hXq2LkbADcndSsjesgq9kDPf.git
-  version: v3.35.0-0
+  version: v3.42.0-0
   name: databasus
   activation_prefix: databasus_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-ddclient.git
@@ -269,7 +269,7 @@
   name: farmos
   activation_prefix: farmos_
 - src: git+https://seed.radicle.garden/zmszzm7ynZe8nt5ZwaLctssyJcNm.git
-  version: v1.12.1-0
+  version: v1.13.0-0
   name: feishin
   activation_prefix: feishin_
 - src: git+https://seed.radicle.garden/z3Fe49p3uVZpC43KdB5gDCTmr8u7Y.git
@@ -277,7 +277,7 @@
   name: fider
   activation_prefix: fider_
 - src: git+https://seed.radicle.garden/z318zbpe2RNjFqVzXqPoDDJvvohbw.git
-  version: v2.63.5-0
+  version: v2.63.14-0
   name: filebrowser
   activation_prefix: filebrowser_
 - src: git+https://seed.radicle.garden/z3ALGSKDhVLeMnR49YPXk5yv2yTge.git
@@ -405,7 +405,7 @@
   name: influxdb
   activation_prefix: influxdb_
 - src: git+https://seed.radicle.garden/zA2EcZYaHBzoc3XudvDhVDBjT42a.git
-  version: v4.10.1-1
+  version: v4.11.0-0
   name: inspircd
   activation_prefix: inspircd_
 - src: git+https://github.com/spatterIight/ansible-role-jackett.git
@@ -529,7 +529,7 @@
   name: memcached
   activation_prefix: memcached_
 - src: git+https://seed.radicle.garden/z2UFFCDXMH6Am1K99TaiYP8BJmqaj.git
-  version: v0.28.0-1
+  version: v0.29.1-0
   name: memos
   activation_prefix: memos_
 - src: git+https://iris.radicle.network/z2RAnfyxCYZSoUiDufyzTM7P3RvEd.git
@@ -585,7 +585,7 @@
   name: n8n
   activation_prefix: n8n_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-navidrome.git
-  version: v0.61.2-2
+  version: v0.62.0-0
   name: navidrome
   activation_prefix: navidrome_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-neko.git
@@ -681,7 +681,7 @@
   name: papra
   activation_prefix: papra_
 - src: git+https://seed.radicle.garden/z2cZCZP8Mu4LYMbHKaTdnP1otc46L.git
-  version: v1.7.2-1
+  version: v1.8.0-0
   name: pdfding
   activation_prefix: pdfding_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-peertube.git
@@ -945,7 +945,7 @@
   name: telegraf
   activation_prefix: telegraf_
 - src: git+https://seed.radicle.garden/z4TiZiqkm6MBmkPL2NTPMavni6LV.git
-  version: v2.3.1-0
+  version: v2.3.2-0
   name: termix
   activation_prefix: termix_
 - src: git+https://seed.radicle.garden/z3vaa8VAuz3pxqB3FyciNKQRSHqyt.git
