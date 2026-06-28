@@ -41,7 +41,7 @@
   name: appsmith
   activation_prefix: appsmith_
 - src: git+https://iris.radicle.network/zcSq6tnVLBUQ88zSRLThc7A7RDZb.git
-  version: v20260616-0
+  version: v20260626-0
   name: asciinema_server
   activation_prefix: asciinema_server_
 - src: git+https://iris.radicle.network/z4ATDhf89CPqP7XCLNpNwobuJ9fBs.git
@@ -85,7 +85,7 @@
   name: bentopdf
   activation_prefix: bentopdf_
 - src: git+https://iris.radicle.network/z2nQcYvPh51zfvVu8hkftDYPmELYP.git
-  version: v1.5.2-0
+  version: v1.6.0-0
   name: bichon
   activation_prefix: bichon_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-bind.git
@@ -157,7 +157,7 @@
   name: container_socket_proxy
   activation_prefix: mash_
 - src: git+https://iris.radicle.network/z22bUmhZzA5VWtmKERFkEjGzdPuke.git
-  version: v13.0.1-0
+  version: v14.0.0-0
   name: converse
   activation_prefix: converse_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-convertx.git
@@ -213,7 +213,7 @@
   name: docmost
   activation_prefix: docmost_
 - src: git+https://iris.radicle.network/z2HG5jWufCQfA8cYAFkJ9GmZyRcCs.git
-  version: v3.1.0-0
+  version: v3.1.1-0
   name: docuseal
   activation_prefix: docuseal_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-dokuwiki.git
@@ -249,7 +249,7 @@
   name: etherpad
   activation_prefix: etherpad_
 - src: git+https://iris.radicle.network/z4SSf2SU2YwBaMmCFBJnM5KqorU9T.git
-  version: v9.3.1-0
+  version: v9.3.2-0
   name: eurooffice
   activation_prefix: eurooffice_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-excalidraw.git
@@ -269,7 +269,7 @@
   name: fail2ban
   activation_prefix: system_security_fail2ban_
 - src: git+https://iris.radicle.network/z2H8vYeXaYHLzV3jXH1YjVwhuzTsk.git
-  version: v4.0.2-0
+  version: v4.0.3-0
   name: farmos
   activation_prefix: farmos_
 - src: git+https://iris.radicle.network/zmszzm7ynZe8nt5ZwaLctssyJcNm.git
@@ -277,11 +277,11 @@
   name: feishin
   activation_prefix: feishin_
 - src: git+https://iris.radicle.network/z3Fe49p3uVZpC43KdB5gDCTmr8u7Y.git
-  version: v0.35.0-0
+  version: v0.36.0-0
   name: fider
   activation_prefix: fider_
 - src: git+https://iris.radicle.network/z318zbpe2RNjFqVzXqPoDDJvvohbw.git
-  version: v2.63.15-0
+  version: v2.63.16-0
   name: filebrowser
   activation_prefix: filebrowser_
 - src: git+https://iris.radicle.network/z3ALGSKDhVLeMnR49YPXk5yv2yTge.git
@@ -329,7 +329,7 @@
   name: funkwhale
   activation_prefix: funkwhale_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-ghostfolio.git
-  version: v3.16.0-0
+  version: v3.17.0-0
   name: ghostfolio
   activation_prefix: ghostfolio_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-gitea.git
@@ -377,11 +377,11 @@
   name: heimdall
   activation_prefix: heimdall_
 - src: git+https://iris.radicle.network/zsKztkwnLv9wVMRYbcpoFesx6L5j.git
-  version: v3.0.0-3
+  version: v3.0.0-4
   name: heyform
   activation_prefix: heyform_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-homarr.git
-  version: v1.67.0-0
+  version: v1.68.0-0
   name: homarr
   activation_prefix: homarr_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-hubsite.git
@@ -441,7 +441,7 @@
   name: karakeep
   activation_prefix: karakeep_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-keycloak.git
-  version: v26.6.3-0
+  version: v26.6.4-0
   name: keycloak
   activation_prefix: keycloak_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-keydb.git
@@ -485,7 +485,7 @@
   name: linkwarden
   activation_prefix: linkwarden_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-listmonk.git
-  version: v6-1
+  version: v6.2.0-0
   name: listmonk
   activation_prefix: listmonk_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-lldap.git
@@ -529,7 +529,7 @@
   name: mediawiki
   activation_prefix: mediawiki_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-meilisearch.git
-  version: v1.47.0-0
+  version: v1.48.2-0
   name: meilisearch
   activation_prefix: meilisearch_
 - src: git+https://iris.radicle.network/z2arPcue4GZ6G6FY3gZexsJXqHyDs.git
@@ -549,11 +549,11 @@
   name: minecraft
   activation_prefix: minecraft_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-miniflux.git
-  version: v2.3.1-0
+  version: v2.3.2-0
   name: miniflux
   activation_prefix: miniflux_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-misskey.git
-  version: v2026.5.4-0
+  version: v2026.6.0-0
   name: misskey
   activation_prefix: misskey_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-mobilizon.git
@@ -565,7 +565,7 @@
   name: monerooo
   activation_prefix: monerooo_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-mongodb.git
-  version: v8.3.3-0
+  version: v8.3.4-0
   name: mongodb
   activation_prefix: mongodb_
 - src: git+https://iris.radicle.network/z4Ez9aU119yFMs59cnA3KUnExFAeN.git
@@ -620,6 +620,10 @@
   version: v4.13.2-0
   name: nodebb
   activation_prefix: nodebb_
+- src: git+https://iris.radicle.network/z3g4bZnzZJis1DEKVzR3pPsyUzicT.git
+  version: v5.0.0-0
+  name: nodered
+  activation_prefix: nodered_
 - src: git+https://codeberg.org/moanos/ansible-role-notfellchen.git
   version: v1.3.0-0
   name: notfellchen
@@ -661,7 +665,7 @@
   name: origamivault
   activation_prefix: origamivault_
 - src: git+https://iris.radicle.network/z3cspgyZXPNcnzNXCYKsEGJK7dKKA.git
-  version: v1.21.6-0
+  version: v1.21.7-0
   name: ots
   activation_prefix: ots_
 - src: git+https://iris.radicle.network/zvzJe15VMBkGd2CMBctvpVZgmQG5.git
@@ -833,7 +837,7 @@
   name: redlib
   activation_prefix: redlib_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-redmine.git
-  version: v6.1.2-2
+  version: v6.1.3-0
   name: redmine
   activation_prefix: redmine_
 - src: git+https://iris.radicle.network/z3rhdtDR5EHHGk1SNBHwYtofxNyAf.git
@@ -873,7 +877,7 @@
   name: send
   activation_prefix: send_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-sftpgo.git
-  version: v2.7.3-0
+  version: v2.7.4-0
   name: sftpgo
   activation_prefix: sftpgo_
 - src: git+https://iris.radicle.network/z3PxyXm3EXE4xCNKcaKVKmtdjVNog.git
@@ -885,7 +889,7 @@
   name: smp_server
   activation_prefix: smp_server_
 - src: git+https://iris.radicle.network/znvd313jEb23f9AUNmtsweE7YHCK.git
-  version: v2.14.0-0
+  version: v2.14.1-0
   name: snowflake
   activation_prefix: snowflake_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-soft_serve.git
@@ -897,7 +901,7 @@
   name: solidinvoice
   activation_prefix: solidinvoice_
 - src: git+https://github.com/spatterIight/ansible-role-sonarr.git
-  version: v4.0.18-0
+  version: v4.0.19-0
   name: sonarr
   activation_prefix: sonarr_
 - src: git+https://iris.radicle.network/z381JyLARWwSiZnYotVXehYcQEw7u.git
@@ -957,7 +961,7 @@
   name: telegraf
   activation_prefix: telegraf_
 - src: git+https://iris.radicle.network/z4TiZiqkm6MBmkPL2NTPMavni6LV.git
-  version: v2.4.0-0
+  version: v2.4.1-0
   name: termix
   activation_prefix: termix_
 - src: git+https://iris.radicle.network/z3vaa8VAuz3pxqB3FyciNKQRSHqyt.git
@@ -1009,7 +1013,7 @@
   name: vaultwarden
   activation_prefix: vaultwarden_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-versatiles.git
-  version: v4.4.0-0
+  version: v4.5.0-0
   name: versatiles
   activation_prefix: versatiles_
 - src: git+https://github.com/mother-of-all-self-hosting/ansible-role-vikunja.git
