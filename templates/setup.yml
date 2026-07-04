@@ -562,6 +562,10 @@
     - role: galaxy/loki
     # /role-specific:loki
 
+    # role-specific:lute
+    - role: galaxy/lute
+    # /role-specific:lute
+
     # role-specific:mailcatcher
     - role: galaxy/mailcatcher
     # /role-specific:mailcatcher
@@ -1037,6 +1041,10 @@
     # role-specific:vaultwarden
     - role: galaxy/vaultwarden
     # /role-specific:vaultwarden
+
+    # role-specific:vector
+    - role: galaxy/vector
+    # /role-specific:vector
 
     # role-specific:versatiles
     - role: galaxy/versatiles

@@ -146,6 +146,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Linkwarden](https://github.com/linkwarden/linkwarden) | Collaborative bookmark manager | [Link](services/linkwarden.md) |
 | [listmonk](https://listmonk.app) | One-way mailing list and newsletter manager | [Link](services/listmonk.md) |
 | [LLDAP](https://github.com/lldap/lldap/) | Lightweight authentication server that provides an opinionated, simplified LDAP interface for authentication | [Link](services/lldap.md) |
+| [Lute](https://github.com/LuteOrg/lute-v3) | Learning foreign languages through reading | [Link](services/lute.md) |
 | [MailCatcher](http://mailcatcher.me/) | SMTP server which catches messages sent to it and displays in a web interface | [Link](services/mailcatcher.md) |
 | [MailCrab](https://github.com/tweedegolf/mailcrab) | SMTP test server for development | [Link](services/mailcrab.md) |
 | [Mailpit](https://mailpit.axllent.org/) | Email testing tool & API | [Link](services/mailpit.md) |
@@ -261,6 +262,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Uptime Kuma](https://uptime.kuma.pet/) | A fancy monitoring tool | [Link](services/uptime-kuma.md) |
 | [Valkey](https://valkey.io/) | A flexible distributed key-value datastore that is optimized for caching and other realtime workloads | [Link](services/valkey.md) |
 | [Vaultwarden](https://github.com/dani-garcia/vaultwarden) | A lightweight unofficial and compatible implementation of the [Bitwarden](https://bitwarden.com/) password manager | [Link](services/vaultwarden.md) |
+| [Vector](https://vector.dev/) | A high-performance observability data pipeline for collecting, transforming, and routing logs and metrics | [Link](services/vector.md) |
 | [VersaTiles](https://versatiles.org) | Vector tile generator & server from OpenStreetMap | [Link](services/versatiles.md) |
 | [Vikunja](https://vikunja.io/) | To-do app | [Link](services/vikunja.md) |
 | [Wazuh](https://wazuh.com/) | Security platform providing SIEM, threat detection, and compliance monitoring | [Link](services/wazuh.md) |
