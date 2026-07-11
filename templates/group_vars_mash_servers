@@ -1176,6 +1176,11 @@ mash_playbook_devture_systemd_service_manager_services_list_auto_itemized:
     {{ ({'name': (reitti_tilecache_identifier + '.service'), 'priority': 2000, 'restart_necessary': (reitti_restart_necessary | bool), 'groups': ['mash', 'reitti']} if reitti_enabled else omit) }}
   # /role-specific:reitti
 
+  # role-specific:restserver
+  - |-
+    {{ ({'name': (restserver_identifier + '.service'), 'priority': 2000, 'restart_necessary': (restserver_restart_necessary | bool), 'groups': ['mash', 'restserver']} if restserver_enabled else omit) }}
+  # /role-specific:restserver
+
   # role-specific:roundcube
   - |-
     {{ ({'name': (roundcube_identifier + '.service'), 'priority': 2000, 'restart_necessary': (roundcube_restart_necessary | bool), 'groups': ['mash', 'roundcube']} if roundcube_enabled else omit) }}
@@ -5498,15 +5503,15 @@ endlessh_container_additional_networks_auto: |
 endlessh_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
 endlessh_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
 
-endlessh_container_labels_metrics_enabled: "{{ mash_playbook_metrics_exposure_enabled }}"
-endlessh_container_labels_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
-endlessh_container_labels_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ endlessh_identifier }}"
-endlessh_container_labels_metrics_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
-endlessh_container_labels_metrics_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
+endlessh_container_labels_traefik_metrics_enabled: "{{ mash_playbook_metrics_exposure_enabled }}"
+endlessh_container_labels_traefik_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
+endlessh_container_labels_traefik_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ endlessh_identifier }}"
+endlessh_container_labels_traefik_metrics_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
+endlessh_container_labels_traefik_metrics_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
 
 # role-specific:traefik
-endlessh_container_labels_metrics_entrypoints: "{{ traefik_entrypoint_primary }}"
-endlessh_container_labels_metrics_tls_certResolver: "{{ traefik_certResolver_primary }}"
+endlessh_container_labels_traefik_metrics_entrypoints: "{{ traefik_entrypoint_primary }}"
+endlessh_container_labels_traefik_metrics_tls_certResolver: "{{ traefik_certResolver_primary }}"
 endlessh_container_labels_traefik_tcp_loadbalancer_serverstransport: "{{ traefik_config_tcp_servertransports_default_proxyprotocol_name }}@file"
 # /role-specific:traefik
 
@@ -6638,8 +6643,6 @@ funkwhale_frontend_container_additional_networks_auto: |
     ([postgres_container_network] if postgres_enabled and (funkwhale_database_hostname == postgres_connection_hostname and funkwhale_frontend_container_network != postgres_container_network and not funkwhale_database_socket_enabled) else [])
   }}
 
-funkwhale_api_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
-funkwhale_api_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
 funkwhale_frontend_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
 funkwhale_frontend_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
 
@@ -6662,8 +6665,6 @@ funkwhale_database_socket_path_host: "{{ postgres_run_path }}"
 # /role-specific:postgres
 
 # role-specific:traefik
-funkwhale_api_container_labels_traefik_entrypoints: "{{ traefik_entrypoint_primary }}"
-funkwhale_api_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_primary }}"
 funkwhale_frontend_container_labels_traefik_entrypoints: "{{ traefik_entrypoint_primary }}"
 funkwhale_frontend_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_primary }}"
 # /role-specific:traefik
@@ -9315,10 +9316,10 @@ keycloak_container_additional_networks_auto: |
 keycloak_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
 keycloak_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
 
-keycloak_container_labels_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
-keycloak_container_labels_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ keycloak_identifier }}"
-keycloak_container_labels_metrics_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
-keycloak_container_labels_metrics_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
+keycloak_container_labels_traefik_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
+keycloak_container_labels_traefik_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ keycloak_identifier }}"
+keycloak_container_labels_traefik_metrics_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
+keycloak_container_labels_traefik_metrics_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
 
 keycloak_environment_variable_kc_metrics_enabled: "{{ prometheus_enabled | default(false) or mash_playbook_metrics_exposure_enabled }}"
 
@@ -14175,11 +14176,11 @@ promtail_container_additional_networks_auto: |
 promtail_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
 promtail_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
 
-promtail_container_labels_metrics_enabled: "{{ mash_playbook_metrics_exposure_enabled }}"
-promtail_container_labels_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
-promtail_container_labels_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ promtail_identifier }}"
-promtail_container_labels_metrics_traefik_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
-promtail_container_labels_metrics_traefik_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
+promtail_container_labels_traefik_metrics_enabled: "{{ mash_playbook_metrics_exposure_enabled }}"
+promtail_container_labels_traefik_metrics_hostname: "{{ mash_playbook_metrics_exposure_hostname }}"
+promtail_container_labels_traefik_metrics_path_prefix: "{{ mash_playbook_metrics_exposure_path_prefix }}/{{ promtail_identifier }}"
+promtail_container_labels_traefik_metrics_traefik_middleware_basic_auth_enabled: "{{ mash_playbook_metrics_exposure_http_basic_auth_enabled }}"
+promtail_container_labels_traefik_metrics_traefik_middleware_basic_auth_users: "{{ mash_playbook_metrics_exposure_http_basic_auth_users }}"
 
 # role-specific:loki
 promtail_config_clients_auto: |
@@ -14844,6 +14845,44 @@ reitti_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_prima
 #                                                                      #
 ########################################################################
 # /role-specific:reitti
+
+
+
+# role-specific:restserver
+########################################################################
+#                                                                      #
+# restserver                                                           #
+#                                                                      #
+########################################################################
+
+restserver_enabled: false
+
+restserver_identifier: "{{ mash_playbook_service_identifier_prefix }}restserver"
+
+restserver_base_path: "{{ mash_playbook_base_path }}/{{ mash_playbook_service_base_directory_name_prefix }}restserver"
+
+restserver_uid: "{{ mash_playbook_uid }}"
+restserver_gid: "{{ mash_playbook_gid }}"
+
+restserver_container_additional_networks_auto: |
+  {{
+    ([mash_playbook_reverse_proxyable_services_additional_network] if mash_playbook_reverse_proxyable_services_additional_network else [])
+  }}
+
+restserver_container_labels_traefik_enabled: "{{ mash_playbook_traefik_labels_enabled }}"
+restserver_container_labels_traefik_docker_network: "{{ mash_playbook_reverse_proxyable_services_additional_network }}"
+
+# role-specific:traefik
+restserver_container_labels_traefik_entrypoints: "{{ traefik_entrypoint_primary }}"
+restserver_container_labels_traefik_tls_certResolver: "{{ traefik_certResolver_primary }}"
+# /role-specific:traefik
+
+########################################################################
+#                                                                      #
+# /restserver                                                          #
+#                                                                      #
+########################################################################
+# /role-specific:restserver
 
 
 
