@@ -47,6 +47,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Bar Assistant](https://github.com/karlomikus/bar-assistant/) | Managing cocktail recipes at your home bar with cocktail-oriented features | [Link](services/barassistant.md) |
 | [Bazarr](https://www.bazarr.media/) | Companion application to Sonarr and Radarr that manages and downloads subtitles | [Link](services/bazarr.md) |
 | [BentoPDF](https://github.com/alam00000/bentopdf) | Client-side PDF editor and converter | [Link](services/bentopdf.md) |
+| [Beszel hub](https://beszel.dev/) | Lightweight server monitoring hub with historical data, Docker stats and alerts | [Link](services/beszel-hub.md) |
 | [Bichon](https://github.com/rustmailer/bichon) | Email archiving server with full-text search function | [Link](services/bichon.md) |
 | [BIND](https://www.isc.org/bind/) | A full-featured DNS server | [Link](services/bind.md) |
 | [bitmagnet](https://bitmagnet.io/) | BitTorrent indexer, DHT crawler, content classifier and search engine | [Link](services/bitmagnet.md) |
@@ -184,6 +185,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Notfellchen](https://codeberg.org/moanos/notfellchen) | List animals available for adoption to increase their chance of finding a forever-home | [Link](services/notfellchen.md) |
 | [ntfy](https://ntfy.sh/) | HTTP-based pub-sub notification service to send you push notifications from any computer | [Link](services/ntfy.md) |
 | [OAuth2-Proxy](https://oauth2-proxy.github.io/oauth2-proxy/) | A reverse proxy and static file server that provides authentication using OpenID Connect Providers | [Link](services/oauth2-proxy.md) |
+| [Ollama](https://ollama.com/) | Server for running large language models on your own hardware | [Link](services/ollama.md) |
 | [OmniTools](https://github.com/iib0011/omni-tools) | Web app offering a variety of online tools to simplify everyday tasks | [Link](services/omnitools.md) |
 | [Onion Service with C Tor](https://community.torproject.org/onion-services/) | Run Onion Service with [C Tor](https://gitlab.torproject.org/tpo/core/tor) | [Link](services/onion-service-tor.md) |
 | [ONLYOFFICE Docs](https://helpcenter.onlyoffice.com/docs) | Online office suite comprising viewers and editors | [Link](services/onlyoffice-docs.md) |
@@ -197,6 +199,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [OxiTraffic](https://codeberg.org/mo8it/oxitraffic) | Simple and privacy respecting website traffic tracker | [Link](services/oxitraffic.md) |
 | [Paperless-ngx](https://paperless-ngx.com) | Document management system that transforms your physical documents into a searchable online archive | [Link](services/paperless-ngx.md) |
 | [Papra](https://github.com/papra-hq/papra) | Document management and archiving platform | [Link](services/papra.md) |
+| [Passbolt](https://www.passbolt.com/) | An open source password manager for teams | [Link](services/passbolt.md) |
 | [PdfDing](https://www.pdfding.com/) | PDF manager, viewer and editor | [Link](services/pdfding.md) |
 | [PeerTube](https://joinpeertube.org/) | ActivityPub federated video platform | [Link](services/peertube.md) |
 | [pgAdmin](https://www.pgadmin.org/) | Web-based Postgres database server administration software | [Link](services/pgadmin.md) |
@@ -217,8 +220,10 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [Prometheus Postgres Exporter](https://github.com/prometheus-community/postgres_exporter) | A PostgreSQL metric exporter for Prometheus | [Link](services/prometheus-postgres-exporter.md) |
 | [Prometheus SSH Exporter](https://github.com/treydock/ssh_exporter) | SSH probes | [Link](services/prometheus-ssh-exporter.md) |
 | [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/) | Agent which ships the contents of local logs to a private [Grafana Loki](services/grafana-loki.md) instance | [Link](services/promtail.md) |
+| [Prowlarr](https://prowlarr.com/) | An indexer manager/proxy for Usenet and BitTorrent users | [Link](services/prowlarr.md) |
 | [PruneMate](https://github.com/anoniemerd/PruneMate) | Automatically clean up Docker resources on a schedule | [Link](services/prunemate.md) |
 | [qBittorrent](https://www.qbittorrent.org/) | A BitTorrent client | [Link](services/qbittorrent.md) |
+| [qui](https://getqui.com/) | A fast, modern web interface for qBittorrent | [Link](services/qui.md) |
 | [RabbitMQ](https://www.rabbitmq.com/) | Message-broker which supports AMQP, STOMP, MQTT, etc. | [Link](services/rabbitmq.md) |
 | [Radarr](https://radarr.video/) | A movie organizer/manager for Usenet and BitTorrent users | [Link](services/radarr.md) |
 | [Radicale](https://radicale.org/) | A CalDAV and CardDAV Server (solution for hosting contacts and calendars) | [Link](services/radicale.md) |
@@ -266,6 +271,7 @@ Below is an exhaustive list of the free and open-source software for self-hostin
 | [transfer.sh](https://github.com/dutchcoders/transfer.sh) | File sharing with the command-line | [Link](services/transfersh.md) |
 | [TSDProxy](https://almeidapaulopt.github.io/tsdproxy/) | A proxy for virtual services in Tailscale | [Link](services/tsdproxy.md) |
 | [Typesense](https://typesense.org) | Typo-tolerant fulltext search engine | [Link](services/typesense.md) |
+| [Unpackerr](https://unpackerr.zip/) | An archive extraction daemon for Sonarr, Radarr, Lidarr and other Starr apps | [Link](services/unpackerr.md) |
 | [Uptime Kuma](https://uptime.kuma.pet/) | A fancy monitoring tool | [Link](services/uptime-kuma.md) |
 | [Valkey](https://valkey.io/) | A flexible distributed key-value datastore that is optimized for caching and other realtime workloads | [Link](services/valkey.md) |
 | [Vaultwarden](https://github.com/dani-garcia/vaultwarden) | A lightweight unofficial and compatible implementation of the [Bitwarden](https://bitwarden.com/) password manager | [Link](services/vaultwarden.md) |
@@ -294,6 +300,7 @@ Below is a list of non-free (i.e. licensed under a non-free license) software wh
 | [Browserless](https://docs.browserless.io) | Deploy headless browsers in Docker | [Link](services/browserless.md) |
 | [MongoDB](https://www.mongodb.com/) | A source-available cross-platform document-oriented (NoSQL) database program | [Link](services/mongodb.md) |
 | [n8n](https://n8n.io/) | Workflow automation for technical people | [Link](services/n8n.md) |
+| [Open WebUI](https://openwebui.com/) | Self-hosted web interface for AI models | [Link](services/open-webui.md) |
 | [Plex](https://www.plex.tv/) | A personal media server | [Link](services/plex.md) |
 
 ## Related playbooks

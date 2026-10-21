@@ -62,7 +62,7 @@ Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-ro
 
 After running the command for installation, the qBittorrent instance becomes available at the URL specified with `qbittorrent_hostname`. With the configuration above, the service is hosted at `https://qbittorrent.example.com`.
 
-To get started, open the URL with a web browser to log in to the instance with a **temporary** randomly generated password. Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-role-qbittorrent/blob/main/docs/configuring-qbittorrent.md#usage) on the role's documentation for details.
+To get started, open the URL with a web browser to log in to the instance with a **temporary** randomly generated password. Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-role-qbittorrent/blob/main/docs/configuring-qbittorrent.md#usage) on the role's documentation for details about the usage.
 
 ## Related services
 
@@ -72,5 +72,7 @@ To get started, open the URL with a web browser to log in to the instance with a
 - [Jellyfin](jellyfin.md) — Personal media server
 - [Seerr](seerr.md) — A media request and discovery manager
 - [Plex](plex.md) — Personal media server
+- [qui](qui.md) — A fast, modern web interface for qBittorrent
 - [Radarr](radarr.md) — Movie organizer/manager for Usenet and BitTorrent users
 - [Sonarr](sonarr.md) — PVR for newsgroup and BitTorrent users
+- [Unpackerr](unpackerr.md) — An archive extraction daemon for Sonarr, Radarr, Lidarr and other Starr apps

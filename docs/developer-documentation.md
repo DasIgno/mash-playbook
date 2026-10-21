@@ -8,6 +8,31 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Developer documentation
 
+## Style guide for playbook developers
+
+This section describes the conventions used when developing this playbook and writing its documentation. Follow it when adding a new component (a role and its documentation page) or editing existing ones, so that everything stays consistent.
+
+The guide is meant for anyone preparing a contribution. If you find existing files that deviate from it, feel free to send a pull request bringing them in line.
+
+### Language
+
+- Write in English, using American spelling ("customize", not "customise").
+- Proper nouns are capitalized: Ansible, Docker, Traefik, Postgres, Grafana, etc. Some projects deliberately brand themselves in lowercase (e.g. `authentik`, `coturn`) and keep their lowercase name even at the start of a sentence. When in doubt, follow the upstream project's own spelling.
+
+### Markdown style
+
+- Do not hard-wrap prose. Each paragraph is a single line in the source file, no matter how long. This keeps the source and the rendered result consistent and makes diffs easier to work with.
+- Number ordered lists sequentially (`1.`, `2.`, `3.`), instead of relying on the Markdown renderer to fix a repeated (`1.`, `1.`, `1.`) or wrong (`1.`, `2.`, `4.`) sequence.
+- Use `-` for unordered lists.
+- Wrap variable names, file paths, commands, domains, and service names in backticks (`` ` ``).
+- Use fenced code blocks with a language hint (```` ```yaml ````, ```` ```sh ````) for configuration and command examples.
+- Use relative links when linking between documentation pages (e.g. `[Configuring DNS](configuring-dns.md)`).
+
+### Miscellaneous
+
+- Link to the role's documentation instead of duplicating its content (installation steps, distro-specific commands, etc.). Copied instructions go stale; links age much better.
+- Reuse existing files to minimize inconsistencies.
+
 ## Support a new service | Create your own role
 
 Are you interested in adding a new service which is not yet [available on this playbook](supported-services.md)? Great! By following the guide below, you can easily implement one to the playbook.
@@ -96,7 +121,7 @@ Make sure to edit configuration files inside `templates` — These are source fi
 
 #### Add the role to `group_vars_mash_servers` in `templates` directory
 
-On `group_vars_mash_servers` you need to wire your role with the rest of the services of the playbook — integrating with the service manager or potentially with other roles.
+On [`group_vars_mash_servers`](../templates/group_vars_mash_servers) you need to wire your role with the rest of the services of the playbook — integrating with the service manager or potentially with other roles.
 
 When adding the role, replace `YOUR-SERVICE` with yours, and also mind the place to add the role, as the roles are (mostly) sorted alphabetically for other developers' sanity.
 
@@ -166,7 +191,7 @@ mash_playbook_postgres_managed_databases_auto_itemized:
         'name': YOUR-SERVICE_database_name,
         'username': YOUR-SERVICE_database_username,
         'password': YOUR-SERVICE_database_password,
-      } if YOUR-SERVICE_enabled else omit)
+      } if YOUR-SERVICE_enabled and (YOUR-SERVICE_database_hostname == postgres_connection_hostname or YOUR-SERVICE_database_socket_enabled) else omit)
     }}
   # /role-specific:YOUR-SERVICE
 
@@ -189,23 +214,24 @@ mash_playbook_postgres_managed_databases_auto_itemized:
 
 YOUR-SERVICE_systemd_required_services_list_auto: |
   {{
-    ([postgres_identifier ~ '.service'] if postgres_enabled and YOUR-SERVICE_database_hostname == postgres_connection_hostname else [])
+    ([postgres_identifier ~ '.service'] if postgres_enabled and (YOUR-SERVICE_database_hostname == postgres_connection_hostname or YOUR-SERVICE_database_socket_enabled) else [])
   }}
 
 YOUR-SERVICE_container_additional_networks_auto: |
   {{
     [...]
     +
-    ([postgres_container_network] if postgres_enabled and YOUR-SERVICE_database_hostname == postgres_connection_hostname and YOUR-SERVICE_container_network != postgres_container_network else [])
+    ([postgres_container_network] if postgres_enabled and (YOUR-SERVICE_database_hostname == postgres_connection_hostname and YOUR-SERVICE_container_network != postgres_container_network and not YOUR-SERVICE_database_socket_enabled) else [])
   }}
 
 [...]
 
 # role-specific:postgres
-YOUR-SERVICE_database_hostname: "{{ postgres_connection_hostname if postgres_enabled else '' }}"
+YOUR-SERVICE_database_hostname: "{{ postgres_connection_hostname if postgres_enabled and not YOUR-SERVICE_database_socket_enabled else '' }}"
 YOUR-SERVICE_database_port: "{{ postgres_connection_port if postgres_enabled else '5432' }}"
-YOUR-SERVICE_database_username: "{{ YOUR-SERVICE_identifier }}"
-YOUR-SERVICE_database_password: "{{ (mash_playbook_generic_secret_key + ':db.yourservice') | hash('sha512') | to_uuid }}"
+YOUR-SERVICE_database_password: "{{ (mash_playbook_generic_secret_key + ':YOUR-SERVICE.db') | hash('sha512') | to_uuid }}"
+YOUR-SERVICE_database_sslmode: "{{ 'disable' if postgres_enabled and (YOUR-SERVICE_database_hostname == postgres_connection_hostname or YOUR-SERVICE_database_socket_enabled) else 'prefer' }}"
+YOUR-SERVICE_database_socket_path_host: "{{ postgres_run_path }}"
 # /role-specific:postgres
 
 ########################################################################
@@ -216,7 +242,12 @@ YOUR-SERVICE_database_password: "{{ (mash_playbook_generic_secret_key + ':db.you
 # /role-specific:YOUR-SERVICE
 ```
 
-💡 If your role requires MySQL, you can instead wire it to MariaDB on this playbook via `mash_playbook_mariadb_managed_databases_auto_itemized` in a similar way. See the [service documentation](services/mariadb.md) for details about managing a MariaDB instance.
+The example above presupposes that the role is configured to wire the service to Postgres with a Unix socket. Adjust it as necessary if the service does not support one.
+
+💡 **Notes**:
+
+- If your role requires MySQL, you can instead wire it to MariaDB on this playbook via `mash_playbook_mariadb_managed_databases_auto_itemized` in a similar way. See the [service documentation](services/mariadb.md) for details about managing a MariaDB instance.
+- If the service supports multiple database drivers (MySQL, Postgres, SQLite, etc.), please prepare a `YOUR-SERVICE_database_type` variable on `defaults/main.yml` *without setting a default value*, so that users will be able to choose which one to use by themselves. Though a default database driver is specified for some roles on `group_vars_mash_servers` with a value such as `"{{ 'postgres' if postgres_enabled | default(false) else 'sqlite' }}"`, it is not a best practice, and should be avoided for a new role. Please refer to <https://github.com/mother-of-all-self-hosting/mash-playbook/issues/1061> for the context.
 
 </details>
 
@@ -273,17 +304,20 @@ YOUR-SERVICE_config_mailer_protocol: "{{ 'smtp' if exim_relay_enabled else '' }}
 
 </details>
 
-### 4. Make sure the role actually works
+### 4. Make sure the playbook can actually install a service with the role
 
-If you are willing to submit the change to the playbook's repository, please make sure that the role actually works as expected.
+If you are willing to submit the change to this repository, please make sure that the role is integrated with the playbook properly, and the playbook can install a service with the role as expected. This is an important step which should never be skipped.
 
-There are several ways of testing the playbook; from using a local virtual machine, configuring a [Molecule](https://docs.ansible.com/projects/molecule/) testing framework, to running the locally modified playbook against an actual machine, and so on.
+Our pick to **test a role** is to use a [Molecule](https://docs.ansible.com/projects/molecule/) test framework. It is versatile, simulates installation in a predictable way, and helps you to spot an implementation bug before it is published.
 
-Our pick is to add a Molecule test framework. It is versatile, simulates installation in a predictable way, and helps you to spot an implementation bug before it is published and merged to the playbook.
+>[!NOTE]
+> If you look at the roles maintained by the MASH organization, you might be overwhelmed with intensiveness and aggressiveness of the Molecule test implementation. It is basically because the team enables patch level automerging with Renovate for them and wants to make sure as much as possible that they can be successfully updated without causing a disruption. *Verifying that the service that the role installs works is by default out-of-scope of the tests, and not your responsibility either*, though it might be appreciated.
+>
+> If you are not familiar with Molecule, it is fine not to implement a test with it. Please avoid making something up which you cannot confirm by yourself that it really works as expected (by using Gen-AI / LLM, etc). A defected test is worse than not having one in the first place.
 
-💡 If you look at the roles maintained by the MASH organization, you might be overwhelmed with intensiveness and aggressiveness of the Molecule test implementation. It is basically because the team enables patch level automerging with Renovate for them and wants to make sure as much as possible that they can be successfully updated without causing a disruption. *Verifying that the service that the role installs works is by default out-of-scope of the tests, and not your responsibility either*, though it might be appreciated.
+However, please do note that *it is not (yet) possible to check with Molecule whether the playbook can install a service with the role as expected*. In other words, passing Molecule tests on the side of the role has nothing to with whether the role is properly implemented to the playbook; even if Molecule tests will be implemented to the playbook, it won't be nothing more than a mere simulation, under certain specific conditions. **It is always encouraged to confirm with your own eyes that the service has become usable on an actual machine, and discouraged to rely on a simulation by a Gen-AI / LLM or something else to assume the service probably might be installed.** Such implementation can be labelled as a AI slop, and dropped from the playbook.
 
-**If you are not familiar with Molecule, it is fine not to implement a test with it.** Please avoid making something up which you cannot confirm by yourself that it really works as expected (by using Gen-AI / LLM, etc). A defected test is worse than not having one in the first place.
+There are several ways of testing the playbook; from using a local virtual machine to running the locally modified playbook against an actual machine, and so on. In these cases, creating a symbolic link to the role's directory inside `roles/galaxy` should make it easier to test the role while debugging it, as you won't have to delete the directory and recreate it again and again.
 
 ### 5. Maintain your role
 
@@ -297,10 +331,7 @@ Please do not hesitate to ask for help to let the community members help you! �
 
 ## Reviewing role dependency updates
 
-Renovate opens pull requests for Ansible role version updates instead of merging their branches
-directly. Review the released role changes and the playbook wiring before merging; a role update may
-need a playbook adaptation even when its role tests pass. Other dependency classes retain their
-separate Renovate policies.
+Renovate opens pull requests for Ansible role version updates instead of merging their branches directly. Review the released role changes and the playbook wiring before merging; a role update may need a playbook adaptation even when its role tests pass. Other dependency classes retain their separate Renovate policies.
 
 ## Maintaining the Renovate runner
 

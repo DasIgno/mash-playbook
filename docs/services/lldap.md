@@ -38,9 +38,9 @@ For details about configuring the [Ansible role for LLDAP](https://github.com/mo
 
 This service requires the following other services:
 
+- [Postgres](postgres.md) / MySQL / [MariaDB](mariadb.md) / [SQLite](https://www.sqlite.org/) database
 - [Traefik](traefik.md) reverse-proxy server
 - (optional) [exim-relay](exim-relay.md) mailer
-- (optional) [Postgres](postgres.md) / MySQL / [MariaDB](mariadb.md) database — LLDAP will default to [SQLite](https://www.sqlite.org/) if Postgres is not enabled
 
 ## Configuration
 
@@ -70,9 +70,12 @@ lldap_hostname: lldap.example.com
 
 It is necessary to create an initial user with admin privileges. Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-role-lldap/blob/main/docs/configuring-lldap.md#set-administrators-account-details) on the role's documentation for details.
 
-### Select database to use (optional)
+### Select database to use
 
-By default LLDAP is configured to use Postgres, but you can choose other database such as SQLite and MySQL (MariaDB). Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-role-lldap/blob/main/docs/configuring-lldap.md#specify-database-optional) on the role's documentation for details.
+LLDAP can use a MySQL compatible database, Postgres, or SQLite, and you need to choose one. Refer to [this section](https://github.com/mother-of-all-self-hosting/ansible-role-lldap/blob/main/docs/configuring-lldap.md#specify-database) on the role's documentation for details.
+
+>[!NOTE]
+> If you have not disabled Postgres explicitly with this playbook, the database for your existing installation is most likely to be `postgres`.
 
 ### Configuring the mailer (optional)
 
@@ -87,7 +90,7 @@ To actually have the service use (and get messages sent through the exim-relay s
 
 After running the command for installation, the LLDAP instance becomes available at the URL specified with `lldap_hostname`. With the configuration above, the service is hosted at `https://lldap.example.com`.
 
-To get started, open the URL with a web browser to log in to the instance with the administrator account. You can create additional users (admin-privileged or not) after that via the web frontend. Refer to [this section](https://github.com/lldap/lldap/blob/main/README.md#usage) on the documentation for details about usage, including a recommended architecture.
+To get started, open the URL with a web browser to log in to the instance with the administrator account. You can create additional users (admin-privileged or not) after that via the web frontend. Refer to [this section](https://github.com/lldap/lldap/blob/main/README.md#usage) on the documentation for details about the usage, including a recommended architecture.
 
 ## Troubleshooting
 

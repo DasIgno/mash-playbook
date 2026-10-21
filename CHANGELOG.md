@@ -1,3 +1,47 @@
+# 2026-10-20
+
+## FMD Server 0.17: back up before upgrading
+
+This affects existing FMD Server installations. Before rerunning the playbook, follow the [upstream upgrade precautions](https://fmd-foss.org/blog/2026/09/18/api-v2/#what-changes-for-server-operators): back up the SQLite database and test the upgrade and user-facing functionality in a staging environment. For a consistent file backup, stop FMD Server and copy its database directory (`fmd_server_database_path`, normally `/mash/findmydeviceserver/database`). The role does not make this backup or issue a validation error reminding you to do so.
+
+The API and encryption rewrite remains backward compatible with existing accounts and clients. Account migration to API v2 is available through the Android app; it is not required for this server upgrade.
+
+## Homarr v2 requires a backup before upgrading
+
+This affects existing Homarr v1 installations. Before rerunning the playbook, stop Homarr and back up its data directory (`homarr_data_path`, normally `/mash/homarr/data`) and, if you use Postgres for it, its Postgres database. The first v2 start migrates the database in place, and Homarr v1 cannot use the migrated database, so rolling back requires restoring the backup. The role neither makes the backup nor stops with a validation error to remind you.
+
+Homarr v2 no longer supports MySQL (and MariaDB). If you have set `homarr_database_type: mysql`, the role stops with an error: before upgrading, convert the database to SQLite while still on Homarr v1.77 (the version the playbook installed until now) by following the [upstream migration guide](https://homarr.dev/docs/advanced/mysql-to-sqlite), then set `homarr_database_type: sqlite`.
+
+Refer to the [upstream release notes](https://github.com/homarr-labs/homarr/releases/tag/v2.0.0) for other application changes.
+
+# 2026-10-18
+
+## `just start-all` and `just start-group` restart all targeted services again
+
+Since [conditional service restart](#conditional-service-restart-for-install--commands) was introduced, it also applied to runs with only start or restart tags. As more roles began tracking their own changes, these commands stopped restarting most services and only started those that were stopped.
+
+Conditional restart now applies only when an `install-*` tag is selected and no `setup-*` tag. `just install-all` and `just install-service` are unchanged. `just start-all`, `just start-group` and other runs with only start or restart tags restart all their targeted services again, so they briefly interrupt running services. To keep the previous behavior for such a run, add `--extra-vars='devture_systemd_service_manager_conditional_restart_enabled=true'`.
+
+# 2026-10-15
+
+## Uptime Kuma v2 requires a backup before upgrading
+
+This affects existing Uptime Kuma v1 installations. Before rerunning the playbook, stop Uptime Kuma and back up its data directory (`uptime_kuma_data_path`, normally `/mash/uptime-kuma/data`). The first v2 start migrates the database; allow it to finish without restarting the service or host. Migration can take hours, and interruption requires restoring the backup.
+
+Debian/Raspbian Buster hosts must be upgraded to a newer OS before moving to v2: upstream reports container startup failures with Buster's `libseccomp2`. See the [upstream migration guide](https://github.com/louislam/uptime-kuma/wiki/Migration-From-v1-To-v2) for other application changes.
+
+Follow the [role's upgrade instructions](https://github.com/mother-of-all-self-hosting/ansible-role-uptime_kuma/blob/v2.5.6-0/docs/configuring-uptime-kuma.md#upgrading-from-uptime-kuma-1x-to-2x) before upgrading. The role starts the upgrade automatically and does not make the backup or stop with a validation error to remind you.
+
+# 2026-10-12
+
+## (Backward Compatibility Break) TSDProxy upgraded to v2
+
+This only affects you if you have [TSDProxy](docs/services/tsdproxy.md) enabled and use proxy lists (`tsdproxy_config_files`).
+
+TSDProxy v2 changed the format of proxy list files. The role does not manage these files, so it cannot check or convert them: before re-running the playbook, migrate them by hand following the [upstream upgrade guide](https://almeidapaulopt.github.io/tsdproxy/docs/upgrading/from-v1/), and define them with `tsdproxy_config_lists` instead of `tsdproxy_config_files`.
+
+The role reports its other changes (renamed variables, TSDProxy v1 keys in custom configuration) with actionable errors, and container labels in the TSDProxy v1 format keep working. See the [role's upgrade notes](https://github.com/mother-of-all-self-hosting/ansible-role-tsdproxy#upgrading-from-tsdproxy-v1) for details.
+
 # 2026-10-10
 
 ## (Backward Compatibility Break) Safer Docker cleanup, and no more journald vacuuming by default

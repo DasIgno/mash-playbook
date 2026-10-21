@@ -166,6 +166,10 @@
     - role: galaxy/bentopdf
     # /role-specific:bentopdf
 
+    # role-specific:beszel_hub
+    - role: galaxy/beszel_hub
+    # /role-specific:beszel_hub
+
     # role-specific:bichon
     - role: galaxy/bichon
     # /role-specific:bichon
@@ -722,6 +726,10 @@
     - role: galaxy/oauth2_proxy
     # /role-specific:oauth2_proxy
 
+    # role-specific:ollama
+    - role: galaxy/ollama
+    # /role-specific:ollama
+
     # role-specific:omnitools
     - role: galaxy/omnitools
     # /role-specific:omnitools
@@ -733,6 +741,10 @@
     # role-specific:onlyoffice_docs
     - role: galaxy/onlyoffice_docs
     # /role-specific:onlyoffice_docs
+
+    # role-specific:open_webui
+    - role: galaxy/open_webui
+    # /role-specific:open_webui
 
     # role-specific:openarchiver
     - role: galaxy/openarchiver
@@ -777,6 +789,10 @@
     # role-specific:papra
     - role: galaxy/papra
     # /role-specific:papra
+
+    # role-specific:passbolt
+    - role: galaxy/passbolt
+    # /role-specific:passbolt
 
     # role-specific:pdfding
     - role: galaxy/pdfding
@@ -858,6 +874,10 @@
     - role: galaxy/promtail
     # /role-specific:promtail
 
+    # role-specific:prowlarr
+    - role: galaxy/prowlarr
+    # /role-specific:prowlarr
+
     # role-specific:prunemate
     - role: galaxy/prunemate
     # /role-specific:prunemate
@@ -865,6 +885,10 @@
     # role-specific:qbittorrent
     - role: galaxy/qbittorrent
     # /role-specific:qbittorrent
+
+    # role-specific:qui
+    - role: galaxy/qui
+    # /role-specific:qui
 
     # role-specific:rabbitmq
     - role: galaxy/rabbitmq
@@ -1053,6 +1077,10 @@
     # role-specific:typesense
     - role: galaxy/typesense
     # /role-specific:typesense
+
+    # role-specific:unpackerr
+    - role: galaxy/unpackerr
+    # /role-specific:unpackerr
 
     # role-specific:uptime_kuma
     - role: galaxy/uptime_kuma
